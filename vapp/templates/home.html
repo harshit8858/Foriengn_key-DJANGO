@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Basic Django
+{% endblock %}
+
+{% block content %}
+
+<h1>HOME PAGE</h1>
+
+<a href="/pub_form/">PUBLICATION FORM</a>
+<br>
+<a href="/book_form/">BOOK FORM</a>
+<br><br>
+<div align="center">
+
+    {% for i in pub %}
+        <b>Publisher name:{{ i.pubname }}<br>
+        Address:{{ i.address }}<br>
+            Email:{{ i.email }}<br><br></b>
+
+        {% for j in i.book_set.all %}
+
+        <i> Title: {{ j.title }}<br>
+            Publication date: {{ j.pub_date }}<br><br>
+        </i>
+
+        {% endfor %}
+    <hr width ='500px' />
+    {% endfor %}
+</div>
+<br>
+
+{% endblock %}
